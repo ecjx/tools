@@ -1,0 +1,51 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C++ Debug MacOs",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}output/DemoApp/bin/Debug/HoYoPassDemo.app/Contents/MacOS/HoYoPassDemo",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for lldb",
+                    "text": "type summary add --expand --python-path \"${workspaceFolder}/.vscode/lldbprettyprinters\" --regex ^std::.*",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Enable pretty-printing for std::vectors",
+                    "text": "type synthetic add --python-path \"${workspaceFolder}/.vscode/lldbprettyprinters\" --regex ^std::vector<.*>$ --class stdvec.VectorProvider",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Enable pretty-printing for std::strings",
+                    "text": "type synthetic add --python-path \"${workspaceFolder}/.vscode/lldbprettyprinters\" --regex ^std::basic_string<.*>$ --class stdstring.StringProvider",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "CMake: build",
+            "targetArchitecture": "arm64",
+        },
+        {
+            "name": "C++ Debug (MSVC)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\build\\output\\DemoApp\\bin\\Debug\\HoYoPassDemo.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "preLaunchTask": "CMake: build"
+        }
+    ]
+}
